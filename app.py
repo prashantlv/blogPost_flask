@@ -1,0 +1,86 @@
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+app = Flask(__name__)
+# /// means relative path and //// means absolute pat for saving
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+
+db= SQLAlchemy(app)    # link flask app to database  
+
+# create database
+class BlogPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True, nullable = False)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    author = db.Column(db.String(25), default='N/A')
+    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return 'Blog Post' + str(self.id)
+# dummy data 
+
+all_posts = [
+    {
+        'title': 'Post 1',
+        'author': 'mark',
+        'content': 'content of post 1. This is Prashant.'
+    },
+    {
+        'title': 'Post 2',
+        'content': 'content of post 1. This is Anam.'
+    },
+    {
+        'title': 'Post 3',
+        'author': 'gery',
+        'content': 'content of post 1. This is Shristi.'
+    }
+]
+# after this define a variable in route where this data is to be passed
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+@app.route('/posts', methods = ['GET','POST'])
+def posts():
+    if request.method == 'POST':
+        # read from form and add them to db
+        post_title = request.form['title']
+        post_content = request.form['content']
+        post_author = request.form['author']
+        new_post = BlogPost(title = post_title, content= post_content, author = post_author)
+        db.session.add(new_post) # add data in db for current session
+        db.session.commit()     # save permanently in file
+
+        return redirect('/posts')
+    else:
+        all_posts = BlogPost.query.order_by(BlogPost.date_posted).all()
+        return render_template('posts.html',posts = all_posts)
+
+@app.route('/posts/delete/<int:id>')
+def delete(id):
+    post = BlogPost.query.get_or_404(id)
+    db.session.delete(post)
+    db.session.commit()        
+    return redirect('/posts')
+
+    
+    
+@app.route('/users/<string:name>/<int:id>')  # thr < > we can retrive data from dynamic url 
+def hello(name,id):
+    return "Hello, " + name + " your id is: " + str(id) + "."
+
+@app.route('/onlyget', methods = ['GET','POST'])  
+def get_req():
+    return "<h1>You can only get this page.</h1>"   #we can pass html tags in it
+@app.route('/test')
+def test():
+    return '''
+    <h2> h2 </h2>
+    <h4> h4 </h4>
+    '''       
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+    # {% %} called jinja
