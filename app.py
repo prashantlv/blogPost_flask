@@ -75,9 +75,7 @@ def edit(id):
         db.session.commit()
         return redirect('/posts')
     else:
-        return render_template('edit.html', post = post)  
-    
-    
+        return render_template('edit.html', post = post)    
 @app.route('/users/<string:name>/<int:id>')  # thr < > we can retrive data from dynamic url 
 def hello(name,id):
     return "Hello, " + name + " your id is: " + str(id) + "."
