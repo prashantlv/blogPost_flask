@@ -8,29 +8,36 @@
 
     <h2>Create new BlogPost</h2>
     <form action = '/posts' method = 'POST'>
-        Titile: <input type = 'text' name = 'title' id = 'title'>
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" name = 'title' id = 'title' placeholder="Enter title" aria-label="Enter title">
         <br>
-        Post: <input type = 'text' name = 'content' id = 'content'>
+        <label for="author">Author:</label>
+        <input class="form-control" type="text" name = 'author' id = 'author' placeholder="Enter author name" aria-label="Enter author name">
         <br>
-        Author: <input type = 'text' name = 'author' id = 'author'>
+        <label for="content">Post:</label>
+        <textarea class="form-control" name = 'content' id="content" rows="5" placeholder="Enter Content here !!!" ></textarea>
         <br>
+       
         <input type = 'submit'value = 'POST' >
     </form>
 <hr>
 <hr>
 
 <h1> All Posts </h1>   
-
+<br><br>
     {% for post in posts%}
         <h2>{{ post.title }}</h2>
         {% if post.author %}
-            <h5>By: {{ post.author }}</h5>
+            <small>Written By: {{ post.author }} on {{post.date_posted}}</small>
         {% else %}
-            <h5>By: N/A</h5>
-        {% endif%}        
-        <p> {{ post.content }} </p>
-        <a href = '/posts/delete/{{post.id}}'>Delete</a>
-        <a href = '/posts/edit/{{post.id}}'>Edit</a>
+             <small>Written By: N/A on {{post.date_posted}}</small>
+        {% endif%}
+        <br><br>        
+        <p style = "white-space:pre-wrap">{{ post.content }} </p>
+        <a class = "btn btn-danger" href = '/posts/delete/{{post.id}}'>Delete</a>
+        <a class = "btn btn-primary" href = '/posts/edit/{{post.id}}'>Edit</a>
+        <hr>
+        <br>
     {%endfor%}
 
 {% endblock %}        
