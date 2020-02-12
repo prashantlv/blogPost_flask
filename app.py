@@ -95,4 +95,54 @@ def edit(id):
 if __name__ == "__main__":
     app.run(debug=True)
 
-    # {% %} called jinja
+#     # {% %} called jinja
+# fdwdfdf
+# ferf
+# erfv
+# erver
+# ver
+# rver
+# ve
+# vef
+# vef
+# v
+# erv
+# efv
+# efv
+# efv
+# efv
+# evv
+
+# dd
+# vcdv
+# cdvc
+# dc
+# ef
+# ef
+# dwf3
+# e23
+# 2
+# 32
+# 32
+# 3
+# 23
+# 2
+# d
+# s
+# c
+# c
+# sc
+# sc 
+# s
+# cwef
+# 23
+# e
+# 32
+# e23
+# 23
+# e
+# 32
+# e4e23e
+# 32
+# e23
+# e2
