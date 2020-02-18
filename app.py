@@ -28,12 +28,17 @@ all_posts = [
     },
     {
         'title': 'Post 2',
-        'content': 'content of post 1. This is Anam.'
+        'content': 'content of post 2. This is Anam.'
     },
     {
         'title': 'Post 3',
         'author': 'gery',
-        'content': 'content of post 1. This is Shristi.'
+        'content': 'content of post 3. This is Shristi.'
+    },
+    {
+        'title': 'Post 4',
+        'author': 'doe',
+        'content': 'content of post 4. This is Rashi'
     }
 ]
 # after this define a variable in route where this data is to be passed
