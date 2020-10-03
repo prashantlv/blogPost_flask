@@ -1,8 +1,0 @@
----
-name: blogPost_flask
-  input: 'yes'
-  update: 'yes'
-  delete: 'yes'
-  datatypes: 'String'
-description: 'Full blog posting and updating flask web app.'
-...
