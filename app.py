@@ -19,7 +19,7 @@ class BlogPost(db.Model):
     def __repr__(self):
         return 'Blog Post' + str(self.id)
 # dummy data 
-
+'''
 all_posts = [
     {
         'title': 'Post 1',
@@ -41,6 +41,7 @@ all_posts = [
         'content': 'content of post 4. This is Rashi'
     }
 ]
+'''
 # after this define a variable in route where this data is to be passed
 
 @app.route('/')
