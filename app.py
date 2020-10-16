@@ -29,6 +29,11 @@ all_posts = [
     {
         'title': 'Post 2',
         'content': 'content of post 2. This is Anam.'
+    },
+    
+    {
+        'title': 'Post 3',
+        'content': 'content of post 3. This is Preksha.'
     }
 ]
 '''
